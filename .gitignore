@@ -1,0 +1,17 @@
+Thumbs.db
+.DS_Store
+*~
+.sass-cache
+.coffeescript-cache
+compass_app_log.txt
+fire_app_log.txt
+document_root
+tmp
+.bundle
+
+node_modules
+
+javascripts/angular
+stylesheets/style.css
+
+_public
