@@ -1,0 +1,63 @@
+.page-wrap
+	+span-columns(6)
+	&:nth-child(2n)
+		+span-columns(6 omega)
+
+	+at-breakpoint($medium)
+		+span-columns(4)
+		&:nth-child(2n)
+			+span-columns(4)
+		&:nth-child(3n)
+			+span-columns(4 omega)
+	
+	+at-breakpoint($desktop)
+		+span-columns(3)
+		&:nth-child(2n)
+			+span-columns(3)
+		&:nth-child(3n)
+			+span-columns(3)
+		&:nth-child(4n)
+			+span-columns(3 omega)
+
+	+at-breakpoint($large)
+		+span-columns(2)
+		&:nth-child(2n)
+			+span-columns(2)
+		&:nth-child(3n)
+			+span-columns(2)
+		&:nth-child(4n)
+			+span-columns(2)
+		&:nth-child(6n)
+			+span-columns(2 omega)
+
+	background: #ccc
+	margin-top: 1em
+	position: relative
+	+box-shadow(0 1px 1px rgba(0,0,0,0.3))
+	.bg-wrap
+		width: 100%
+		padding-top: 100%
+		.background
+			position: absolute
+			top: 0
+			left: 0
+			width: 100%
+			height: 100%
+			z-index: 1
+		.content
+			height: 40px
+			width: 100%
+			position: absolute
+			bottom: 0
+			left: 0
+			background: rgba(255,255,255,0.8)
+			z-index: 2
+		.from
+			+box-sizing(border-box)
+			padding-left: 0.5em
+			width: 100%
+			height: 100%
+			line-height: 40px
+			overflow: hidden
+			text-overflow : ellipsis
+			white-space : nowrap

@@ -13,14 +13,24 @@ html.no-js lang="zh_tw" ng-app="myApp"
     meta content="" name="author"
     meta content="width=device-width,initial-scale=1.0" name="viewport"
     link href="stylesheets/style.css" rel="stylesheet"
+    link href="icomoon/style.css" rel="stylesheet"
     link href="/favicon.ico" rel="shortcut icon"
     script src="javascripts/modernizr-2.0.6.min.js"
-  body    
-    ng-view    
+  body
+    #header ng-controller="HeaderCtrl"
+      .container
+        a.title href="#/"
+          | OpenMotor
+        #avatar
+    ui-view
+
     script src="javascripts/jquery-1.10.2.min.js"
     script src="https://apis.google.com/js/plusone.js"
     / script src="https://apis.google.com/js/platform.js"
+    script src='https://cdn.firebase.com/js/client/1.0.2/firebase.js'
+    script src='https://cdn.firebase.com/js/simple-login/1.2.1/firebase-simple-login.js'
     script src="javascripts/vendor/angular.js"
+    script src="javascripts/vendor/angular-ui-router.js"
     script src="javascripts/vendor/angular-animate.js"
     script src="javascripts/vendor/angular-cookies.js"
     / script src="javascripts/vendor/angular-mocks.js"
@@ -32,7 +42,14 @@ html.no-js lang="zh_tw" ng-app="myApp"
     script src="javascripts/vendor/angulartics.min.js"
     script src="javascripts/vendor/angulartics-google-analytics.min.js"
     script src="http://www.youtube.com/player_api"
+    script src="javascripts/vendor/ng-infinite-scroll.min.js"
     script src="javascripts/angular/app.js"
+    script src="javascripts/angular/main.js"
+    script src="javascripts/angular/header.js"
+    script src="javascripts/angular/auth.js"
+    script src="javascripts/angular/factory.js"
+    script src="javascripts/angular/directive.js"
+    script src="javascripts/angular/config.js"
 
     #fb-root
 

@@ -1,0 +1,90 @@
+.scroll-wrap
+	overflow: hidden
+	min-height: 1000px
+.wrapper
+	+at-breakpoint($medium)
+		+span-columns(6)
+		&:nth-child(2n)
+			+span-columns(6 omega)
+	+at-breakpoint($desktop)
+		+span-columns(4)
+		&:nth-child(2n)
+			+span-columns(4)
+		&:nth-child(3n)
+			+span-columns(4 omega)
+	+at-breakpoint($large)
+		+span-columns(3)
+		&:nth-child(2n)
+			+span-columns(3)
+		&:nth-child(3n)
+			+span-columns(3)
+		&:nth-child(4n)
+			+span-columns(3 omega)
+	word-break: break-all
+	margin-top: 1em
+	background: #ebebeb
+	height: 300px
+	+box-shadow(0 1px 1px rgba(0,0,0,0.3))
+	position: relative
+	.background
+		position: absolute
+		width: 100%
+		height: 230px
+		z-index: 1
+		span
+			position: absolute
+			top: 50%
+			left: 50%
+			margin-top: -35px
+			margin-left: -20px
+			color: #fff
+			opacity: 0.6
+			font-size: 40px
+			+text-shadow(0 1px 3px rgba(0,0,0,0.8))
+		&:hover
+			span
+				opacity: 1
+	.content
+		position: absolute
+		bottom: 0
+		width: 100%
+		z-index: 2
+	.message
+		+box-sizing(border-box)
+		padding: 0.5em
+		margin: 0.5em
+		background: rgba(255,255,255,0.7)
+		max-height: 200px
+		overflow: hidden
+	.from
+		background: rgba(255,255,255,0.7)
+		height: 35px
+		position: relative
+		width: 100%
+		.avatar
+			height: 35px
+			width: 35px
+			background: #333
+			+inline-block()
+		.name, .time
+			position: absolute
+			top: 0
+			left: 38px
+			+inline-block()
+			+box-sizing(border-box)
+			padding-left: 0.5em
+			font-size: 1em
+			line-height: 1.6em
+			height: 1.6em
+			overflow: hidden
+		.time
+			top: 16px
+			font-size: 12px
+	.social
+		background: rgba(255,255,255,0.7)
+		height: 35px
+		.btn
+			line-height: 35px
+			margin-left: 0.5em
+			span
+				font-size: 12px

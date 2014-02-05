@@ -1,0 +1,37 @@
+.container
+	.scroll-wrap infinite-scroll="nextPage()"  infinite-scroll-distance="0"
+		.wrapper ng-repeat="feed in feeds | orderBy:'-created_time'"
+			/
+			.background ng-if="feed.type=='photo'" get-photo="" photo="{{feed.object_id}}"
+			/
+			.background ng-if="feed.type=='video'" get-video="" poster="{{feed.picture}}" source="{{feed.source}}"
+				span
+					i.icon-play2
+			/
+			.background ng-if="feed.type=='link'" get-link="" photo="{{feed.picture}}" link="{{feed.source}}"
+			/
+			.content
+				.message
+					| {{feed.message}}
+				.from
+					span.avatar get-avatar="" name="{{feed.from.id}}"
+					span.name
+						| {{feed.from.name}}
+					span.time datetime="{{feed.created_time*1000 | date:'yyyy/MM/dd h:mma'}}"
+						| {{feed.created_time*1000 | date:'yyyy/MM/dd h:mma'}}
+				.social
+					a.btn.likes
+						span
+							i.icon-thumbs-up3
+						span.total-count get-likes="" obj="{{feed.id}}"
+							| 
+					a.btn.comments
+						span
+							i.icon-comments-alt
+						span.total-count get-comments="" obj="{{feed.id}}"
+							| 
+					a.btn.shares
+						span
+							i.icon-share
+						span.total-count
+							| {{feed.shares.count}}
