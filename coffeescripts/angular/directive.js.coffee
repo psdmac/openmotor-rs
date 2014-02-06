@@ -38,14 +38,14 @@ myApp.directive 'getComments', ['Get', (Get) ->
       else
         el.html res.summary.total_count
 ]
-myApp.directive 'getPage', ['Get','Data','Users', (Get,Data,Users) ->
+myApp.directive 'getPage', ['Get','Data','APIs', (Get,Data,APIs) ->
   (scope, el, attrs) ->
     date = Math.floor Data.date()/1000
     element = el.context.nextElementSibling.children[0]
     Get.picture(attrs.id).then (res) ->
       el.css "background", 'url('+res.data.url+')' 
       el.css "background-size", 'cover'
-    Pages = Users.pages()
+    Pages = APIs.pages()
     page = Pages.child(attrs.id)
     page.once 'value', (res) ->
       if (date - res.val().update_at) > 604800
@@ -55,4 +55,16 @@ myApp.directive 'getPage', ['Get','Data','Users', (Get,Data,Users) ->
           element.innerText = res.name
       else
         element.innerText = res.val().data.name
+]
+myApp.directive 'getStatus', ['Get','Data','Auth','APIs', (Get,Data,Auth,APIs) ->
+  (scope, el, attrs) ->
+    user = APIs.id(Auth.user().id)
+    user_pages = user.child('pages')
+    user_page = user_pages.child(attrs.id)
+    user_page.on 'value', (res) ->
+      if res.val() is null
+        el.removeClass 'active'
+      else
+        el.addClass 'active'
+
 ]

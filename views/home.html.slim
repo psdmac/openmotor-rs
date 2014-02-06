@@ -35,3 +35,8 @@
 							i.icon-share
 						span.total-count
 							| {{feed.shares.count}}
+	.ajax-loading ng-class="{ajax: ajax}"
+		span
+			i.icon-spinner2.icon-spin
+		span
+			| 載入中

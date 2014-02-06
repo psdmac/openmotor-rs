@@ -1,8 +1,10 @@
 .container
 	.scroll-wrap
-		.page-wrap ng-repeat="page in pages"
+		.page-wrap ng-repeat="page in pages | orderBy:'-data.likes'"
 			.bg-wrap
 				.background data-id="{{page.id}}" data-update="{{page.update_at}}" get-page=""
+					button.toggle data-id="{{page.id}}" get-status="" ng-click="togglePage(page.id)"
+						i.icon-plus
 				.content
 					.from
 			

@@ -2,7 +2,8 @@ myApp.factory "Data", [ ->
   date: ->
     date = new Date()
     date
-  pages: ['ttbbkk','200302235918','F1.Taiwan.Fansite']
+  pages: []
+  total_pages: []
   feeds: []
   api: (route) ->
     'https://openmotor.firebaseio.com'+ route
@@ -58,7 +59,7 @@ myApp.factory "Get", ['Auth','Data','$http', (Auth, Data, $http) ->
         res.data
 ]
 
-myApp.factory "Users", ["FirebaseRoot", (FirebaseRoot) ->
+myApp.factory "APIs", ["FirebaseRoot", (FirebaseRoot) ->
   id: (userid) ->
     root = FirebaseRoot
     user = root.child 'Users/'+userid

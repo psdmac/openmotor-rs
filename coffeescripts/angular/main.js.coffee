@@ -2,9 +2,10 @@ myApp.controller 'MainCtrl',['$scope','$state','$timeout','Auth','Get','Data', (
   current = Math.floor new Date()/1000
   since = current - 86400
   $scope.feeds = Data.feeds
+  Data.feeds.length = 0
   $scope.setInterval = ->
     $timeout ->
-      if Auth.user().accessToken is null
+      if Auth.user().accessToken is null or Data.pages.length is 0
         $scope.setInterval()
       else
         angular.forEach Data.pages, (value) ->
@@ -18,10 +19,12 @@ myApp.controller 'MainCtrl',['$scope','$state','$timeout','Auth','Get','Data', (
     , 100
   $scope.setInterval()
   busy = false
+  $scope.ajax = false
   $scope.nextPage = ->
     console.log 'nextPage...'
     if !busy
       busy = !busy
+      $scope.ajax = !$scope.ajax
       current = since
       since = current - 86400
       i = 0
@@ -36,6 +39,7 @@ myApp.controller 'MainCtrl',['$scope','$state','$timeout','Auth','Get','Data', (
             j++
             if i is Data.pages.length and j is res.length
               busy = !busy
+              $scope.ajax = !$scope.ajax
               console.log Data.feeds
 ]
 
