@@ -1,4 +1,4 @@
-doctype 5
+doctype html
 /![if lt IE 7] <html lang="en" class="no-js ie6 oldie">
 /![if IE 7] <html lang="en" class="no-js ie7 oldie">
 /![if IE 8] <html lang="en" class="no-js ie8 oldie">
@@ -16,11 +16,23 @@ html.no-js lang="zh_tw" ng-app="myApp"
     link href="icomoon/style.css" rel="stylesheet"
     link href="/favicon.ico" rel="shortcut icon"
     script src="javascripts/modernizr-2.0.6.min.js"
+    /! IE Fix for HTML5 Tags
+    /[if lt IE 9]
+      script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"
   body
     #header ng-controller="HeaderCtrl"
       .container
         a.title href="#/"
-          | OpenMotor
+          | RacingSquare
+        nav
+          ul
+            li
+              a.btn href="#/config"
+                span
+                  i.icon-cogs2
+                span
+                  | 設定
+            li
         #avatar
     ui-view
 

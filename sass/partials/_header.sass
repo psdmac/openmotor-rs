@@ -8,12 +8,14 @@
   overflow: hidden
   .title
     float: left
-    text-decoration: none
     line-height: 40px
     font-size: 20px
+    padding-left: 0.5em
+    padding-right: 0.5em
     +inline-block()
   #avatar
     float: right
+    +inline-block()
     width: 30px
     height: 30px
     background: #ccc
@@ -21,6 +23,15 @@
     margin-top: 5px
     border-radius: 50%
     +background-size(cover)
+  nav
+    +inline-block()
+    line-height: 40px
+    ul
+    li
+      +inline-block()
+  a
+    text-decoration: none
+    color: #000
 
 
   

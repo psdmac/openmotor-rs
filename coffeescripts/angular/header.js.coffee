@@ -10,11 +10,16 @@ myApp.controller 'HeaderCtrl',['$scope','$state','Data','Auth','APIs', ($scope,$
     $('#avatar').css 'background', 'url(http://graph.facebook.com/'+Auth.user().id+'/picture?type=normal)'
     $('#avatar').css 'background-size', 'cover'
     user = APIs.id(Auth.user().id)
-    user.on 'value', (res) ->
+    user_page = user.child('pages')
+    user_page.on 'value', (res) ->
       Data.pages.length = 0
-      # push pages data to Data.pages
-      angular.forEach res.val().pages, (value) ->
-        Data.pages.push value.id
+      # res.val() is null represent first time login
+      if res.val() is null
+        $state.go 'config.welcome'
+      else
+        # push pages data to Data.pages
+        angular.forEach res.val(), (value) ->
+          Data.pages.push value.id
     user.once 'value', (res) ->
       # get user data, if res.val() is null, add user to Users
       if res.val() is null

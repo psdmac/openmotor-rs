@@ -1,1 +1,0 @@
-var myApp;myApp=angular.module("myApp",["ngRoute","ngSanitize"]),myApp.config(["$locationProvider","$routeProvider",function(e,r){return e.html5Mode(!1).hashPrefix("!"),r.when("/",{templateUrl:"views/home.html",controller:"MainCtrl"}).otherwise({redirectTo:"/"})}]);

@@ -3,6 +3,9 @@ myApp.controller 'MainCtrl',['$scope','$state','$timeout','Auth','Get','Data', (
   since = current - 86400
   $scope.feeds = Data.feeds
   Data.feeds.length = 0
+  busy = false
+  $scope.ajax = false
+  init = false
   $scope.setInterval = ->
     $timeout ->
       if Auth.user().accessToken is null or Data.pages.length is 0
@@ -11,18 +14,17 @@ myApp.controller 'MainCtrl',['$scope','$state','$timeout','Auth','Get','Data', (
         angular.forEach Data.pages, (value) ->
           Get.feed(value, since, current).then (res) ->
             # console.log res
+            init = true
             angular.forEach res, (value) ->
               Data.feeds.push value
-              if value.type is 'status'
-                console.log value
+              # if value.type is 'status'
+              #   console.log value
               # console.log $scope.feeds
     , 100
   $scope.setInterval()
-  busy = false
-  $scope.ajax = false
   $scope.nextPage = ->
-    console.log 'nextPage...'
-    if !busy
+    if !busy and init
+      # console.log 'nextPage...'
       busy = !busy
       $scope.ajax = !$scope.ajax
       current = since
@@ -31,16 +33,19 @@ myApp.controller 'MainCtrl',['$scope','$state','$timeout','Auth','Get','Data', (
       angular.forEach Data.pages, (value) ->
         Get.feed(value, since, current).then (res) ->
           i++
+          # prevent last res.length is 0
+          if i is Data.pages.length and res.length is 0
+            busy = !busy
+            $scope.ajax = !$scope.ajax
           j = 0
           angular.forEach res, (value) ->
             Data.feeds.push value
-            if value.type is 'status'
-              console.log value
             j++
+            # all the res push in Data.pages
             if i is Data.pages.length and j is res.length
               busy = !busy
               $scope.ajax = !$scope.ajax
-              console.log Data.feeds
+              # console.log Data.feeds
 ]
 
 myApp.controller 'LoginCtrl',['$scope','$state','$timeout','Auth', ($scope,$state,$timeout,Auth) ->

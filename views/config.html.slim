@@ -1,4 +1,5 @@
 .container
+	ui-view
 	.scroll-wrap
 		.page-wrap ng-repeat="page in pages | orderBy:'-data.likes'"
 			.bg-wrap
@@ -7,4 +8,7 @@
 						i.icon-plus
 				.content
 					.from
+	.done-wrap
+		button.done.btn ng-click="done()"
+			| 完成
 			

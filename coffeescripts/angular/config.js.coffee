@@ -15,4 +15,6 @@ myApp.controller 'ConfigCtrl',['$scope','$state','$timeout','Data','Auth','APIs'
         user_page.set id: id
       else 
         user_page.remove()
+  $scope.done = ->
+    $state.go 'root'
 ]

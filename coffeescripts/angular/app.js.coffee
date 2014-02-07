@@ -15,4 +15,7 @@ myApp.config ['$stateProvider', '$urlRouterProvider', ($stateProvider, $urlRoute
       url: '/config'
       templateUrl: 'views/config.html'
       controller: 'ConfigCtrl'
+    .state 'config.welcome',
+      url: '/welcome'
+      templateUrl: 'views/config.welcome.html'
 ]
