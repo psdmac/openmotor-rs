@@ -1,4 +1,5 @@
-myApp.controller 'ConfigCtrl',['$scope','$state','$timeout','Data','Auth','APIs', ($scope,$state,$timeout,Data,Auth,APIs) ->
+myApp.controller 'ConfigCtrl',['$scope','$state','$timeout','Data','Auth','APIs','$analytics', ($scope,$state,$timeout,Data,Auth,APIs,$analytics) ->
+  $analytics.pageTrack(window.location.hash)
   Pages = APIs.pages()
   $scope.pages = Data.total_pages
   Pages.on 'value', (res) ->

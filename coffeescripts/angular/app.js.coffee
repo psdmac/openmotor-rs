@@ -1,7 +1,8 @@
-myApp = angular.module 'myApp', ['ui.router','ngSanitize','infinite-scroll']
+myApp = angular.module 'myApp', ['ui.router','ngSanitize','infinite-scroll','angulartics','angulartics.google.analytics']
 
-myApp.config ['$stateProvider', '$urlRouterProvider', ($stateProvider, $urlRouterProvider) ->
+myApp.config ['$stateProvider', '$urlRouterProvider', '$analyticsProvider', ($stateProvider, $urlRouterProvider, $analyticsProvider) ->
   $urlRouterProvider.otherwise "/"
+  $analyticsProvider.virtualPageviews(false)
   $stateProvider
     .state 'root',
       url: "/"

@@ -1,4 +1,5 @@
-myApp.controller 'MainCtrl',['$scope','$state','$timeout','Auth','Get','Data', ($scope,$state,$timeout,Auth,Get,Data)->
+myApp.controller 'MainCtrl',['$scope','$state','$timeout','Auth','Get','Data','$analytics', ($scope,$state,$timeout,Auth,Get,Data,$analytics)->
+  $analytics.pageTrack(window.location.hash)
   current = Math.floor new Date()/1000
   since = current - 86400
   $scope.feeds = Data.feeds
@@ -48,7 +49,8 @@ myApp.controller 'MainCtrl',['$scope','$state','$timeout','Auth','Get','Data', (
               # console.log Data.feeds
 ]
 
-myApp.controller 'LoginCtrl',['$scope','$state','$timeout','Auth', ($scope,$state,$timeout,Auth) ->
+myApp.controller 'LoginCtrl',['$scope','$state','$timeout','Auth','$analytics', ($scope,$state,$timeout,Auth,$analytics) ->
+  $analytics.pageTrack(window.location.hash)
   auth = Auth.auth (user) ->
     if user is 'logout'
 
